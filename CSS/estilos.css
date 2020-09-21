@@ -70,6 +70,13 @@ body {
   width: 33.3%;
 }
 
+/* Right column parrafs */
+.column.right p{
+ padding: 20px;
+ background-color: #117A65;
+ color: white;
+}
+
 /* Clear floats after the columns */
 .row:after {
   content: "";
