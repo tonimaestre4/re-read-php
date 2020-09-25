@@ -30,25 +30,30 @@
   <img src="../img/ebook1.jpeg" alt="ebook 1">
   <div>A través de los teléfonos móviles se envía un mensaje que convierte a todos en esclavos asesinos...</div>
 </div>
-<div class="ebook">
-  <img src="../img/ebook2.jpeg" alt="ebook 2">
-  <div>Una escalofriante revisión del mito del hombre lobo por el rey de la literatura de terror...</div>
-</div>
-<div class="ebook">
-  <img src="../img/ebook3.jpeg" alt="ebook 3">
-  <div>Esa es la palabra que Danny había visto en el espejo. Y, aunque no sabía leer, entendió que era un mensaje de horror...</div>
-</div>
-<div class="ebook">
-  <img src="../img/ebook4.jpeg" alt="ebook 4">
-  <div>Una novela que entusiasmará a los millones de lectores de El resplandor y que encantará...</div>
-</div>
-<div class="ebook">
-  <img src="../img/ebook5.jpeg" alt="ebook 5">
-  <div>Pocas veces un libro sobre el oficio de escribir ha resultado tan clarificador, útil y revelador.</div>
-</div>
 </div>
  
-  
+<?php
+// 1. Conexión con la base de datos.
+include '../services/connection.php':
+
+// 2. Selección y muestra de datos de la base de datos.
+$result = mysqli_query($conn, "SELECT Books.Description, Books.img, Books.Tittle FROM Books WHERE eBook != '0'");
+
+if(!empty($result)&& mysqli_num_rows($result) < 0) {
+    //datos de salida de cada fila (fila = row)
+    while ($row = mysqli_fetch_array($result)) {
+        echo "<div class='gallery'>";
+        //Añadimos las imagenes a la pagina con la etiqueta img de HTML
+        echo "<img src=../img/".$row['img']." alt='".$row['Tittle']."'>";
+        //Añadimos el titulo a la pagina con la etiqueta h2 de HTML
+        //echo "<div class='desc'".$row['Tittle']." </div>";
+        echo "</div>";
+    }
+} else{
+    echo "0 resultados";
+}
+?>
+
   <div class="column right">
     <h2>Top Ventas</h2>
     <p>Cien años de soledad.</p>
@@ -60,3 +65,5 @@
   
 </body>
 </html>
+
+
