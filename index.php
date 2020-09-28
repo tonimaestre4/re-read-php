@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,9 +20,9 @@
   
   <div class="column left">
 <div class="topnav">
-  <a href="index.html">Re-Read</a>
-  <a href="view/libros.html">Libros</a>
-  <a href="view/ebooks.html">eBooks</a>
+  <a href="index.php">Re-Read</a>
+  <a href="view/libros.php">Libros</a>
+  <a href="view/ebooks.php">eBooks</a>
 </div>
 
     <h3>Nunca la lectura había sido tan necesaria</h3>
@@ -41,3 +42,4 @@
   
 </body>
 </html>
+

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,32 +20,47 @@
   
   <div class="column left">
 <div class="topnav">
-  <a href="../index.html">Re-Read</a>
-  <a href="libros.html">Libros</a>
-  <a href="ebooks.html">eBooks</a>
+  <a href="../index.php">Re-Read</a>
+  <a href="libros.php">Libros</a>
+  <a href="ebooks.php">eBooks</a>
 </div>
 
     <h3>Toda la actualidad en eBook</h3>
-    
+ <!--   
 <div class="ebook">
   <img src="../img/ebook1.jpeg" alt="ebook 1">
   <div>A través de los teléfonos móviles se envía un mensaje que convierte a todos en esclavos asesinos...</div>
 </div>
+<div class="ebook">
+  <img src="../img/ebook2.jpeg" alt="ebook 2">
+  <div>A través de los teléfonos móviles se envía un mensaje que convierte a todos en esclavos asesinos...</div>
 </div>
- 
+<div class="ebook">
+  <img src="../img/ebook3.jpeg" alt="ebook 3">
+  <div>A través de los teléfonos móviles se envía un mensaje que convierte a todos en esclavos asesinos...</div>
+</div>
+<div class="ebook">
+  <img src="../img/ebook4.jpeg" alt="ebook 4">
+  <div>A través de los teléfonos móviles se envía un mensaje que convierte a todos en esclavos asesinos...</div>
+</div>
+<div class="ebook">
+  <img src="../img/ebook5.jpeg" alt="ebook 5">
+  <div>A través de los teléfonos móviles se envía un mensaje que convierte a todos en esclavos asesinos...</div>
+</div>
+-->
 <?php
 // 1. Conexión con la base de datos.
-include '../services/connection.php':
+include '../services/connection.php';
 
 // 2. Selección y muestra de datos de la base de datos.
-$result = mysqli_query($conn, "SELECT Books.Description, Books.img, Books.Tittle FROM Books WHERE eBook != '0'");
+$result = mysqli_query($conn, "SELECT Books.Description, Books.img, Books.Title FROM Books WHERE eBook != '0'");
 
-if(!empty($result)&& mysqli_num_rows($result) < 0) {
+if(!empty($result)&& mysqli_num_rows($result) > 0) {
     //datos de salida de cada fila (fila = row)
     while ($row = mysqli_fetch_array($result)) {
-        echo "<div class='gallery'>";
+        echo "<div class='ebook'>";
         //Añadimos las imagenes a la pagina con la etiqueta img de HTML
-        echo "<img src=../img/".$row['img']." alt='".$row['Tittle']."'>";
+        echo "<img src=../img/".$row['img']." alt='".$row['Title']."'>";
         //Añadimos el titulo a la pagina con la etiqueta h2 de HTML
         //echo "<div class='desc'".$row['Tittle']." </div>";
         echo "</div>";
@@ -53,7 +69,7 @@ if(!empty($result)&& mysqli_num_rows($result) < 0) {
     echo "0 resultados";
 }
 ?>
-
+</div>
   <div class="column right">
     <h2>Top Ventas</h2>
     <p>Cien años de soledad.</p>
