@@ -31,29 +31,6 @@
   <div>A través de los teléfonos móviles se envía un mensaje que convierte a todos en esclavos asesinos...</div>
 </div>
 </div>
- 
-<?php
-// 1. Conexión con la base de datos.
-include '../services/connection.php':
-
-// 2. Selección y muestra de datos de la base de datos.
-$result = mysqli_query($conn, "SELECT Books.Description, Books.img, Books.Tittle FROM Books WHERE eBook != '0'");
-
-if(!empty($result)&& mysqli_num_rows($result) < 0) {
-    //datos de salida de cada fila (fila = row)
-    while ($row = mysqli_fetch_array($result)) {
-        echo "<div class='gallery'>";
-        //Añadimos las imagenes a la pagina con la etiqueta img de HTML
-        echo "<img src=../img/".$row['img']." alt='".$row['Tittle']."'>";
-        //Añadimos el titulo a la pagina con la etiqueta h2 de HTML
-        //echo "<div class='desc'".$row['Tittle']." </div>";
-        echo "</div>";
-    }
-} else{
-    echo "0 resultados";
-}
-?>
-
   <div class="column right">
     <h2>Top Ventas</h2>
     <p>Cien años de soledad.</p>
