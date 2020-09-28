@@ -30,6 +30,22 @@
   <img src="../img/ebook1.jpeg" alt="ebook 1">
   <div>A través de los teléfonos móviles se envía un mensaje que convierte a todos en esclavos asesinos...</div>
 </div>
+<div class="ebook">
+  <img src="../img/ebook2.jpeg" alt="ebook 2">
+  <div>A través de los teléfonos móviles se envía un mensaje que convierte a todos en esclavos asesinos...</div>
+</div>
+<div class="ebook">
+  <img src="../img/ebook3.jpeg" alt="ebook 3">
+  <div>A través de los teléfonos móviles se envía un mensaje que convierte a todos en esclavos asesinos...</div>
+</div>
+<div class="ebook">
+  <img src="../img/ebook4.jpeg" alt="ebook 4">
+  <div>A través de los teléfonos móviles se envía un mensaje que convierte a todos en esclavos asesinos...</div>
+</div>
+<div class="ebook">
+  <img src="../img/ebook5.jpeg" alt="ebook 5">
+  <div>A través de los teléfonos móviles se envía un mensaje que convierte a todos en esclavos asesinos...</div>
+</div>
 </div>
   <div class="column right">
     <h2>Top Ventas</h2>
