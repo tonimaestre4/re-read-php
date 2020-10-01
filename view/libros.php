@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,9 +20,7 @@
   
   <div class="column left">
 <div class="topnav">
-  <a href="../index.html">Re-Read</a>
-  <a href="libros.html">Libros</a>
-  <a href="ebooks.html">eBooks</a>
+
 </div>
 
     <h3>Todos los libros tienen el mismo precio</h3>
@@ -43,10 +42,7 @@
   
   <div class="column right">
     <h2>Top Ventas</h2>
-    <p>Cien años de soledad.</p>
-    <p>Cronica de una muerte anunciada.</p>
-    <p>El otoño del patriarca.</p>
-    <p>El general en su laberinto.</p>
+
   </div>
 </div>
   
