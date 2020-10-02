@@ -20,6 +20,7 @@
 <div class="row">
    
   <div class="column left">
+
  	<div class="topnav">
   		<a href="../index.php">Re-Read</a>
   		<a href="libros.php">Libros</a>
@@ -120,3 +121,24 @@ if(!empty($result)&& mysqli_num_rows($result) > 0) {
   
 </body>
 </html>
+
+<div class="topnav">
+
+<div class="ebook">
+  <img src="../img/ebook1.jpeg" alt="ebook 1">
+  <div>A través de los teléfonos móviles se envía un mensaje que convierte a todos en esclavos asesinos...</div>
+</div>
+<div class="ebook">
+  <img src="../img/ebook2.jpeg" alt="ebook 2">
+
+    <p>Cien años de soledad.</p>
+    <p>Cronica de una muerte anunciada.</p>
+    <p>El otoño del patriarca.</p>
+    <p>El general en su laberinto.</p>
+
+  </div>
+</div>
+  
+</body>
+</html>
+
