@@ -1,11 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <title>CSS Website Layout</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="../CSS/estilos.css">
+<!---Estilos enlazados-->
+<link rel="stylesheet" type="text/css" href="../css/estilos.css">
+
 </head>
 <body>
 
@@ -17,62 +18,82 @@
 </div>
 
 <div class="row">
-  
+   
   <div class="column left">
-<div class="topnav">
-  <a href="../index.php">Re-Read</a>
-  <a href="libros.php">Libros</a>
-  <a href="ebooks.php">eBooks</a>
-</div>
-
-    <h3>Toda la actualidad en eBook</h3>
- <!--   
-<div class="ebook">
-  <img src="../img/ebook1.jpeg" alt="ebook 1">
-  <div>A través de los teléfonos móviles se envía un mensaje que convierte a todos en esclavos asesinos...</div>
-</div>
-<div class="ebook">
-  <img src="../img/ebook2.jpeg" alt="ebook 2">
-  <div>A través de los teléfonos móviles se envía un mensaje que convierte a todos en esclavos asesinos...</div>
-</div>
-<div class="ebook">
-  <img src="../img/ebook3.jpeg" alt="ebook 3">
-  <div>A través de los teléfonos móviles se envía un mensaje que convierte a todos en esclavos asesinos...</div>
-</div>
-<div class="ebook">
-  <img src="../img/ebook4.jpeg" alt="ebook 4">
-  <div>A través de los teléfonos móviles se envía un mensaje que convierte a todos en esclavos asesinos...</div>
-</div>
-<div class="ebook">
-  <img src="../img/ebook5.jpeg" alt="ebook 5">
-  <div>A través de los teléfonos móviles se envía un mensaje que convierte a todos en esclavos asesinos...</div>
-</div>
+ 	<div class="topnav">
+  		<a href="../index.php">Re-Read</a>
+  		<a href="libros.php">Libros</a>
+  		<a href="ebooks.php">eBooks</a>
+	</div>
+    <h2>Toda la actualidad en eBook</h2>
+      <!--Nuevo desarrollo: formulario para filtrar autor-->
+<div>
+    <form action="ebooks.php" method="POST">
+    <label for="fautor">Autor</label>
+    <input type="text" id="fautor" name="fautor" placeholder="Introduzca el autor...">
+    <!--
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
 -->
+    <label for="country">País</label>
+    <select id="country" name="country">
+      <option value="%">Todos los países</option>
+      <?php
+      // 1. Conexión con la base de datos	
+      include '../services/connection.php';
+      $query="SELECT DISTINCT Authors.Country FROM Authors ORDER BY Country";
+      $result=mysqli_query($conn,$query);
+      while ($row =mysqli_fetch_array($result)){
+        echo '<option value="'.$row[Country].'">'.$row[Country].'</option>';
+      }
+
+      echo '<option value="canada">Canada</option>';
+      ?>
+      <option value="usa">USA</option>
+    </select>
+    <input type="submit" value="Buscar">
+  </form>
+</div>
 <?php
-// 1. Conexión con la base de datos.
+
+// 1. Conexión con la base de datos	
 include '../services/connection.php';
+if (isset($_POST['fautor'])){
+    //Filtrará los ebooks que se mostrarán en la página
+    $query="SELECT Books.Description, Books.img, Books.Title 
+    FROM Books INNER JOIN BooksAuthors ON Id=BooksAuthors.BookId
+    INNER JOIN Authors ON Authors.Id = BooksAuthors.AuthorId
+    WHERE Authors.Name LIKE '%{$_POST['fautor']}%'
+    AND Authors.Country LIKE '%{$_POST['country']}%'";
+    $result = mysqli_query($conn, $query);
+}else{
+  //Mostrará todos los ebooks de la DB
+  // 1. Conexión con la base de datos.
+  //include '../services/connection.php';
 
-// 2. Selección y muestra de datos de la base de datos.
-$result = mysqli_query($conn, "SELECT Books.Description, Books.img, Books.Title FROM Books WHERE eBook != '0'");
-
-if(!empty($result)&& mysqli_num_rows($result) > 0) {
-    //datos de salida de cada fila (fila = row)
-    $i=0;
-    while ($row = mysqli_fetch_array($result)) {
-        $i++;
-        echo "<div class='ebook'>";
-        //Añadimos las imagenes a la pagina con la etiqueta img de HTML
-        echo "<img src=../img/".$row['img']." alt='".$row['Title']."'>";
-        //Añadimos el titulo a la pagina con la etiqueta h2 de HTML
-        echo "<div class='desc'>".$row['Description']." </div>";
-        echo "</div>";
-        if ($i%3==0) {
-          echo "<div style='clear:both;'></div>";
-        }
-    }
-} else{
-    echo "0 resultados";
+  // 2. Selección y muestra de datos de la base de datos.
+  $result = mysqli_query($conn, "SELECT Books.Description, Books.img, Books.Title FROM Books WHERE eBook != '0'");
 }
+if(!empty($result)&& mysqli_num_rows($result) > 0) {
+  //datos de salida de cada fila (fila = row)
+  $i=0;
+  while ($row = mysqli_fetch_array($result)) {
+      $i++;
+      echo "<div class='ebook'>";
+      //Añadimos las imagenes a la pagina con la etiqueta img de HTML
+      echo "<img src=../img/".$row['img']." alt='".$row['Title']."'>";
+      //Añadimos el titulo a la pagina con la etiqueta h2 de HTML
+      echo "<div class='desc'>".$row['Description']." </div>";
+      echo "</div>";
+      if ($i%3==0) {
+        echo "<div style='clear:both;'></div>";
+      }
+  }
+} else{
+  echo "0 resultados";
+}
+
+
 ?>
 </div>
   <div class="column right">
@@ -93,16 +114,9 @@ if(!empty($result)&& mysqli_num_rows($result) > 0) {
     echo "0 resultados";
 }
 ?>
-<!--
-    <p>Cien años de soledad.</p>
-    <p>Cronica de una muerte anunciada.</p>
-    <p>El otoño del patriarca.</p>
-    <p>El general en su laberinto.</p>
--->
-  </div>
+
+</div>
 </div>
   
 </body>
 </html>
-
-
