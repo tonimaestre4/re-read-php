@@ -1,24 +1,10 @@
 <?php
-$host = "localhost";
-$user = "root";
-$pass = "";
-$db = "reread";
-
-$conn = mysqli_connect($host, $user, $pass, $db);
-
-if (!$conn) {
-    echo "Error: No se pudo conectar a MySQL." . PHP_EQL;
-    echo "Error de depuración: " . mysqli_connect_errno() . PHP_EQL;
-    exit;
-} else {
-    mysqli_connect_charset($conn, "utf8");
-}
 // ESTILO POR PROCEDIMIENTOS
 
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db = "re-read-php";
+$db = "reread";
 
 // Crear la conexión
 $conn = mysqli_connect($host, $user, $pass, $db);
@@ -35,6 +21,7 @@ if (!$conn) {
 /* //ESTILO ORIENTADO A OBJETOS
 // Crear la conexión
 $conn = new mysqli('localhost', 'root', '', 'imagenes');
+
 // Checkear la conexión
 if ($conn->connect_errno) {
 	die("Error: No se pudo conectar a MySQL: " . $conn->connect_errno);
