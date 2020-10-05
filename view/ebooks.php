@@ -32,6 +32,10 @@
         <form action="ebooks.php" method="POST">
           <label for="fautor">Autor</label>
           <input type="text" id="fautor" name="fautor" placeholder="Introduce el autor...">
+      <!--Nuevo desarrollo: formulario para filtrar titulo-->
+        <form action="ebooks.php" method="POST">
+          <label for="ftitulo">Título</label>
+          <input type="text" id="ftitulo" name="ftitulo" placeholder="Introduce el Título...">
           <!--
           <label for="lname">Last Name</label>
           <input type="text" id="lname" name="lastname" placeholder="Your last name..">
@@ -59,7 +63,8 @@
         FROM Books INNER JOIN BooksAuthors ON Id=BooksAuthors.BookId
         INNER JOIN Authors ON Authors.Id = BooksAuthors.AuthorId
         WHERE Authors.Name LIKE '%{$_POST['fautor']}%'
-        AND Authors.Country LIKE '{$_POST['country']}'";
+        AND Authors.Country LIKE '{$_POST['country']}'
+        AND Books.Title LIKE '{$_POST['ftitulo']}%'";
         $result = mysqli_query($conn, $query);
       }else {
         //mostrará todos los ebooks de la DB 
